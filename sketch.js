@@ -1,4 +1,6 @@
 // Stèv Animated Text
+// version without mouse interaction to avoid conflict when embedded in iframe
+// and adding a clickable link (ie. to Homepage)
 
 let rate = 3;
 
@@ -28,12 +30,14 @@ class drawRectangle {
     this.rightBound = this.leftBound + this.size;
   }
 
-  checkMousePos() {
+  
+  changeCharacter() {
     if (random(100000) > 99500) {
       this.currentAlpha = this.finalAlpha;
       this.textArrayOffset += 4;
       }
     
+    /*
     if (this.leftBound < mouseX &&
         mouseX < this.rightBound &&
         mouseY < lowerBound &&
@@ -41,7 +45,7 @@ class drawRectangle {
         frameCount%rate == 0) {
       this.currentAlpha = this.finalAlpha;
       this.textArrayOffset += 4;
-    }
+    } */
 
     if (this.textArrayOffset > this.offset+9) {
       this.textArrayOffset = this.offset;
@@ -106,7 +110,7 @@ function draw() {
   // draw rectangles
   for (i = 0; i < 4; i ++) {
     shape[i].backToWhite();
-    shape[i].checkMousePos();
+    shape[i].changeCharacter();
     shape[i].showRect();
     shape[i].showText();
   }    
